@@ -238,24 +238,24 @@
         <footer class="max-w-3xl mx-auto px-4 mt-12 mb-8 flex flex-col items-center text-center text-zinc-500 text-xs">
             <p class="uppercase tracking-wider font-bold text-zinc-600 dark:text-zinc-400 mb-4">Evianas</p>
             
-            <!-- Redes Sociales -->
-            <div class="flex items-center gap-4 mb-6">
+            <!-- Redes Sociales (Modificadas) -->
+            <div class="flex items-center gap-4 mb-6" id="social-links-container">
                 <a href="https://www.facebook.com/evianasgrillcr" target="_blank" rel="noopener noreferrer" aria-label="Facebook Evianas"
-                   onclick="this.blur()"
-                   class="w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 hover:scale-110 hover:bg-[#1877F2] hover:text-white dark:hover:bg-[#1877F2] dark:hover:text-white shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none">
-                    <i class="fa-brands fa-facebook-f text-lg"></i>
+                   class="social-btn group w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none"
+                   data-color-class="!bg-[#1877F2] !text-white">
+                    <i class="fa-brands fa-facebook-f text-lg transition-transform group-hover:scale-110"></i>
                 </a>
                 
                 <a href="https://www.instagram.com/evianascr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Evianas"
-                   onclick="this.blur()"
-                   class="w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 hover:scale-110 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white dark:hover:text-white shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none">
-                    <i class="fa-brands fa-instagram text-lg"></i>
+                   class="social-btn group w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none"
+                   data-color-class="!bg-gradient-to-tr !from-[#f09433] !via-[#dc2743] !to-[#bc1888] !text-white">
+                    <i class="fa-brands fa-instagram text-lg transition-transform group-hover:scale-110"></i>
                 </a>
                 
                 <a href="https://wa.me/50685441261" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Evianas"
-                   onclick="this.blur()"
-                   class="w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 hover:scale-110 hover:bg-[#25D366] hover:text-white dark:hover:bg-[#25D366] dark:hover:text-white shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none">
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                   class="social-btn group w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none"
+                   data-color-class="!bg-[#25D366] !text-white">
+                    <i class="fa-brands fa-whatsapp text-xl transition-transform group-hover:scale-110"></i>
                 </a>
             </div>
 
@@ -264,6 +264,41 @@
     </div>
 
     <script>
+        // --- Nuevo Script para Limpiar Botones Sociales ---
+        const socialBtns = document.querySelectorAll('.social-btn');
+
+        socialBtns.forEach(btn => {
+            // Cuando tocan/hacen clic, aplicamos el color guardado en 'data-color-class'
+            btn.addEventListener('mousedown', function() {
+                const colorClasses = this.getAttribute('data-color-class').split(' ');
+                colorClasses.forEach(c => this.classList.add(c));
+            });
+            btn.addEventListener('touchstart', function() {
+                 const colorClasses = this.getAttribute('data-color-class').split(' ');
+                 colorClasses.forEach(c => this.classList.add(c));
+            }, {passive: true});
+
+            // Cuando levantan el dedo (se van a otra pestaña) o el mouse sale, lo quitamos
+            btn.addEventListener('mouseleave', clearSocialColors);
+        });
+
+        // Función para limpiar forzosamente todos los botones
+        function clearSocialColors() {
+            socialBtns.forEach(b => {
+                 const colorClasses = b.getAttribute('data-color-class').split(' ');
+                 colorClasses.forEach(c => b.classList.remove(c));
+                 b.blur(); // Quitamos el foco por si acaso
+            });
+        }
+
+        // ¡EL TRUCO FINAL! Limpiar todo cuando la página vuelve a ser visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                clearSocialColors();
+            }
+        });
+        // ------------------------------------------------
+
         const themeToggleBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
 

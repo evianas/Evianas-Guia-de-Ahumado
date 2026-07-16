@@ -8,6 +8,9 @@
     <script>
         tailwind.config = {
             darkMode: 'class',
+            future: {
+                hoverOnlyWhenSupported: true,
+            },
             theme: {
                 extend: {
                     colors: {
@@ -184,10 +187,10 @@
                 <p class="text-zinc-600 dark:text-zinc-400 text-sm mb-4 transition-colors">Selecciona tu equipo de cocción para ver los pasos exactos de preparación:</p>
                 
                 <div class="flex gap-3 mb-6">
-                    <button onclick="toggleGrill('opt1')" id="btn-grill-opt1" class="grill-toggle flex-1 py-3 px-4 rounded-xl border border-zinc-300 dark:border-brand-border bg-zinc-100 dark:bg-zinc-800/40 font-bold text-sm transition-all active:scale-95 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800/80 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange">
+                    <button onclick="toggleGrill('opt1')" id="btn-grill-opt1" class="grill-toggle flex-1 py-3 px-2 sm:px-4 rounded-xl border border-zinc-300 dark:border-brand-border bg-zinc-100 dark:bg-zinc-800/40 font-bold text-xs sm:text-sm transition-all active:scale-95 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800/80 flex items-center justify-center gap-1.5 sm:gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange whitespace-nowrap">
                         <i id="grill-icon-opt1" class="fa-solid fa-gas-pump"></i> <span id="grill-text-opt1">Gas</span>
                     </button>
-                    <button onclick="toggleGrill('opt2')" id="btn-grill-opt2" class="grill-toggle active flex-1 py-3 px-4 rounded-xl border border-brand-orange bg-brand-orange/10 font-bold text-sm transition-all active:scale-95 text-brand-orange flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange">
+                    <button onclick="toggleGrill('opt2')" id="btn-grill-opt2" class="grill-toggle active flex-1 py-3 px-2 sm:px-4 rounded-xl border border-brand-orange bg-brand-orange/10 font-bold text-xs sm:text-sm transition-all active:scale-95 text-brand-orange flex items-center justify-center gap-1.5 sm:gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange whitespace-nowrap">
                         <i id="grill-icon-opt2" class="fa-solid fa-fire"></i> <span id="grill-text-opt2">Carbón</span>
                     </button>
                 </div>
@@ -241,16 +244,19 @@
             <!-- Redes Sociales -->
             <div class="flex items-center gap-4 mb-6">
                 <a href="https://www.facebook.com/evianasgrillcr" target="_blank" rel="noopener noreferrer" aria-label="Facebook Evianas"
+                   onclick="this.blur()"
                    class="w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 hover:scale-110 hover:bg-[#1877F2] hover:text-white dark:hover:bg-[#1877F2] dark:hover:text-white shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none">
                     <i class="fa-brands fa-facebook-f text-lg"></i>
                 </a>
                 
                 <a href="https://www.instagram.com/evianascr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Evianas"
+                   onclick="this.blur()"
                    class="w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 hover:scale-110 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white dark:hover:text-white shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none">
                     <i class="fa-brands fa-instagram text-lg"></i>
                 </a>
                 
                 <a href="https://wa.me/50685441261" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Evianas"
+                   onclick="this.blur()"
                    class="w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400 transition-all duration-300 hover:scale-110 hover:bg-[#25D366] hover:text-white dark:hover:bg-[#25D366] dark:hover:text-white shadow-sm focus-visible:ring-2 focus-visible:ring-brand-orange focus:outline-none">
                     <i class="fa-brands fa-whatsapp text-xl"></i>
                 </a>
@@ -560,11 +566,11 @@
             }
 
             if (currentGrillOpt === 'opt1') {
-                btn1.className = "grill-toggle active flex-1 py-3 px-4 rounded-xl border border-brand-orange bg-brand-orange/10 font-bold text-sm transition-all active:scale-95 text-brand-orange flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange";
-                btn2.className = "grill-toggle flex-1 py-3 px-4 rounded-xl border border-zinc-300 dark:border-brand-border bg-zinc-100 dark:bg-zinc-800/40 font-bold text-sm transition-all active:scale-95 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800/80 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange";
+                btn1.className = "grill-toggle active flex-1 py-3 px-2 sm:px-4 rounded-xl border border-brand-orange bg-brand-orange/10 font-bold text-xs sm:text-sm transition-all active:scale-95 text-brand-orange flex items-center justify-center gap-1.5 sm:gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange whitespace-nowrap";
+                btn2.className = "grill-toggle flex-1 py-3 px-2 sm:px-4 rounded-xl border border-zinc-300 dark:border-brand-border bg-zinc-100 dark:bg-zinc-800/40 font-bold text-xs sm:text-sm transition-all active:scale-95 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800/80 flex items-center justify-center gap-1.5 sm:gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange whitespace-nowrap";
             } else {
-                btn2.className = "grill-toggle active flex-1 py-3 px-4 rounded-xl border border-brand-orange bg-brand-orange/10 font-bold text-sm transition-all active:scale-95 text-brand-orange flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange";
-                btn1.className = "grill-toggle flex-1 py-3 px-4 rounded-xl border border-zinc-300 dark:border-brand-border bg-zinc-100 dark:bg-zinc-800/40 font-bold text-sm transition-all active:scale-95 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800/80 flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange";
+                btn2.className = "grill-toggle active flex-1 py-3 px-2 sm:px-4 rounded-xl border border-brand-orange bg-brand-orange/10 font-bold text-xs sm:text-sm transition-all active:scale-95 text-brand-orange flex items-center justify-center gap-1.5 sm:gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange whitespace-nowrap";
+                btn1.className = "grill-toggle flex-1 py-3 px-2 sm:px-4 rounded-xl border border-zinc-300 dark:border-brand-border bg-zinc-100 dark:bg-zinc-800/40 font-bold text-xs sm:text-sm transition-all active:scale-95 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800/80 flex items-center justify-center gap-1.5 sm:gap-2 focus-visible:ring-2 focus-visible:ring-brand-orange whitespace-nowrap";
             }
         }
     </script>
